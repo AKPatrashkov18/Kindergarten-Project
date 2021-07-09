@@ -1,5 +1,4 @@
-<img src="https://user-images.githubusercontent.com/59877276/125034787-afdc4a80-e099-11eb-872a-f286a0ca62c0.png" width="250">
-
+<img src="https://user-images.githubusercontent.com/59877276/125040135-f46ae480-e09f-11eb-84ed-546a6e142178.png" width="250">
 
 ## Hello, we are team Dream!
 
