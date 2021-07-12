@@ -36,7 +36,9 @@ bool grantAccessForAdmin(string username, string password, int count, ADMIN* adm
 	return 0;
 }
 
-int findUserIndexByUsername(string username, int count, USER* users) //Checks if you entered your Username and Password Correctly
+
+//Checks if you entered your Username and Password Correctly
+int findUserIndexByUsername(string username, int count, USER* users) 
 {
 	for (int i = 0; i < count; i++)
 	{
@@ -48,6 +50,7 @@ int findUserIndexByUsername(string username, int count, USER* users) //Checks if
 	return -1;
 }
 
+//applicant form
 void registrationAsParent(USER* users, int& counter)
 {
 	cout << "Username: ";
@@ -76,6 +79,7 @@ void registrationAsParent(USER* users, int& counter)
 	counter++;
 }
 
+//register as admin if you want to edit
 void registrationAsAdmin(ADMIN* admins, int& adminCounter)
 {
 	cout << "Username: ";
@@ -88,6 +92,8 @@ void registrationAsAdmin(ADMIN* admins, int& adminCounter)
 	adminCounter++;
 
 }
+
+//shows the admin rights
 bool adminMenu(int count, ADMIN* admins, int userId)
 {
 	int choice;
