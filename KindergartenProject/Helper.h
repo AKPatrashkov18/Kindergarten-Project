@@ -34,22 +34,37 @@ void registration(USER* users,int& counter)
 	counter++;
 }
 
+void registrationAsAdmin(ADMIN* admins, int& adminCounter)
+{
+	cout << "Username: ";
+	cin.ignore();
+	getline(cin, admins[adminCounter].adminUsername); cout << endl;
+
+	cout << "Password: ";
+	getline(cin, admins[adminCounter].adminPassword); cout << endl;
+	
+	adminCounter++;
+
+}
 
 
 
 
 
 //PRESENTATION layer
-bool mainMenu(USER* users, int& counter)
+bool mainMenu(USER* users, int& counter, ADMIN* admins, int& adminCounter)
 {
 	int choice;
-	cout << "1. Registration" << endl;
+	cout << "1. Registration as parent" << endl;
+	cout << "2. Registration as admin" << endl;
 	
 	cout << "Enter your choice: ";
 	cin >> choice;
 	switch (choice)
 	{
 	case 1:registration(users, counter); break;
+
+	case 2:registrationAsAdmin(admins, adminCounter); break;
 
 	default:cout << "Try choosing an available opton. " 
 		<< endl << endl; break;

@@ -9,10 +9,14 @@ int main()
 	system("color b");
 	USER users[64];
 	int counter=0;
+
+	ADMIN admins[64];
+	int adminCounter = 0;
+
 	bool showMenu = true;
 	do
 	{
-		showMenu = mainMenu(users, counter);
+		showMenu = mainMenu(users, counter, admins, adminCounter);
 		system("CLS");
 	} while (showMenu);
 }

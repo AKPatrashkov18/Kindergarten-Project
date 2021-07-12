@@ -11,3 +11,8 @@ struct USER
 	string childName;
 	int childAge;
 };
+
+struct ADMIN {
+	string adminUsername;
+	string adminPassword;
+};
