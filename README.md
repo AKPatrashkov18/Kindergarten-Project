@@ -18,3 +18,8 @@ According to set points for each of the districts of the city, points can be giv
 
  - Georgi Koradov
  - Aleksander Patrashkov 
+
+## Contact us
+
+ - AKPatrashkov18@codingburgas.bg
+ - GSKoradov18@codingburgas.bg
