@@ -8,6 +8,20 @@ using namespace std;
 
 //DATA layer
 
+
+//Makes you enter a new option until you have entered a correct one
+void checkForWrongInput(int variable) 
+{
+	while (cin.fail())
+	{
+		cout << "\nEnter a number, please: ";
+		cin.clear();
+		cin.ignore(256, '\n');
+		cin >> variable;
+	}
+}
+
+
 //Checks if you enter valid username and password 
 bool grantAccessForAdmin(string username, string password, int count, ADMIN* admins)
 {
@@ -155,6 +169,7 @@ bool mainMenu(USER* users, int& counter, ADMIN* admins, int& adminCounter)
 
 	cout << "Enter your choice: ";
 	cin >> choice;
+	checkForWrongInput(choice);
 	switch (choice)
 	{
 	case 1:registrationAsParent(users, counter); break;
