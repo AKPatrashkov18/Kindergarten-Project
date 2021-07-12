@@ -1,5 +1,6 @@
 #include <iostream>
 #include<string>
+#include <stdlib.h>
 #include "Structures.h"
 #include "Helper.h"
 using namespace std;
@@ -16,7 +17,8 @@ int main()
 	bool showMenu = true;
 	do
 	{
+		
 		showMenu = mainMenu(users, counter, admins, adminCounter);
-		system("CLS");
+		system("cls");
 	} while (showMenu);
 }
