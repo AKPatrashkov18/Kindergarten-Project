@@ -9,6 +9,7 @@ using namespace std;
 //DATA layer
 
 
+
 //Makes you enter a new option until you have entered a correct one
 void checkForWrongInput(int variable) 
 {
@@ -93,6 +94,24 @@ void registrationAsAdmin(ADMIN* admins, int& adminCounter)
 
 }
 
+
+void createUser(USER* users,int& counter)
+{
+
+}
+void editUser()
+{
+
+}
+void deleteUser()
+{
+
+}
+void showUsersData()
+{
+
+}
+
 //shows the admin rights
 bool adminMenu(int count, ADMIN* admins, int userId)
 {
@@ -104,6 +123,7 @@ bool adminMenu(int count, ADMIN* admins, int userId)
 	cout << "4. Show users" << endl;
 	cout << "5. Search user by parent's last name" << endl;
 	cout << "6. Search user by child's name" << endl;
+	cout << "9. Return to main menu" << endl;
 
 
 	cout << "Enter your choice: ";
@@ -112,13 +132,15 @@ bool adminMenu(int count, ADMIN* admins, int userId)
 	{
 	case 1: break;
 
-	case 2: break;
+	case 6: break;
+	case 9: return 0;
 
 	default:cout << "Try choosing an available opton. "
 		<< endl << endl; break;
 	}
 	return 1;
 }
+
 
 //login function for admins only
 void login(int count, ADMIN* admins,USER* users)
@@ -132,9 +154,10 @@ void login(int count, ADMIN* admins,USER* users)
 	cout << "Password: ";
 	cin >> password;
 
-	while (!grantAccessForAdmin(username, password, count, admins) 
-		&& wrongCounter != 3)
+	while (!grantAccessForAdmin(username, password, count, admins)
+		&& wrongCounter < 3)
 	{
+		cout << endl;
 		cout << "Your username/password is incorrect" << endl;
 		cout << "Please try again" << endl;
 
@@ -149,7 +172,7 @@ void login(int count, ADMIN* admins,USER* users)
 
 	int userId = findUserIndexByUsername(username, count, users);
 
-	if (grantAccessForAdmin(username, password, count, admins) && wrongCounter != 3)
+	if (grantAccessForAdmin(username, password, count, admins) && wrongCounter < 3)
 	{
 		
 		bool showMenu;
@@ -185,6 +208,7 @@ bool mainMenu(USER* users, int& counter, ADMIN* admins, int& adminCounter)
 	case 3:login(adminCounter, admins, users); break;
 
 	case 9:return 0;
+
 	default: break;
 
 	}

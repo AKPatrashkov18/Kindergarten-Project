@@ -14,6 +14,8 @@ int main()
 	ADMIN admins[64];
 	int adminCounter = 0;
 
+	int maxId = 1;
+
 	bool showMenu = true;
 	do
 	{
