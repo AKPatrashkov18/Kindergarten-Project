@@ -3,7 +3,7 @@
 using namespace std;
 struct USER
 {
-	int id;
+	int id=0;
 	string username;
 	string password;
 	string fName;
