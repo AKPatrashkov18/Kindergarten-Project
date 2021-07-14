@@ -10,20 +10,18 @@ using namespace std;
 
 bool checkForAge(USER* users, int& counter)
 {
-	for (int i = 0; i < counter; i++)
-	{
-		if (users[counter].childAge >= 1 || users[counter].childAge<=5)
+	
+		if (users[counter].childAge >= 1 && users[counter].childAge<=5)
 		{
-			return 1;
+			return true;
 		}
-	}
-	return 0;
+	return false;
 }
 void checkForAgeDisplay(USER* users, int& counter)
 {
 	if (!checkForAge(users, counter))
 	{
-		cout << "Your child is too old to be in Kindergarten."<<endl;
+		cout << "Your child is too old/young to be in Kindergarten."<<endl;
 		counter--;
 	}
 	int goback;
@@ -165,9 +163,41 @@ void editUser()
 {
 
 }
-void deleteUser()
+int getUserIndexById(USER* users, int& counter, int id)
 {
+	for (int i = 0; i < counter; i++)
+	{
+		if (users[i].id == id) // check 
+		{
+			return i;
+		}
+	}
 
+	return -1;
+}
+
+USER getCustomer(USER* users, int& counter, int id)
+{
+	int index = getUserIndexById(users, counter, id);
+	return users[index];
+}
+
+void deleteUserById(USER* users, int &counter, int id)
+{
+	int index = getUserIndexById(users, counter, id);
+	for (int i = index; i < counter - 1; i++)
+	{
+		users[i] = users[i + 1];
+	}
+	counter--;
+}
+
+void deleteUserMenu(USER* students, int& counter) //takes the id that the admin entered
+{
+	int userId;
+	cout << "Enter the Id of the user you want to delete: ";
+	cin >> userId;
+	deleteUserById(students, counter, userId);
 }
 void showUsersData()
 {
@@ -193,6 +223,7 @@ bool adminMenu(int count, ADMIN* admins, int userId,USER* users, int& counter)
 	switch (choice)
 	{
 	case 1: system("cls"); createUser(users, counter); break;
+	case 3: system("cls"); deleteUserMenu(users, counter); break;
 	case 4:system("cls"); showAllUsersInfo(users, counter); break;
 	case 6: break;
 	case 9: return 0;
