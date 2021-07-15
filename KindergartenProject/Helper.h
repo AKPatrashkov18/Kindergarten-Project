@@ -86,7 +86,8 @@ void registrationAsParent(USER* users, int& counter)
 	cin >> users[counter].lName; cout << endl;
 
 	cout << "Address: ";
-	cin >> users[counter].address; cout << endl;
+	cin.ignore();
+	getline(cin,users[counter].address); cout << endl;
 
 	cout << "Child's first and last name: ";
 	cin.ignore();
@@ -147,22 +148,6 @@ void showUserInfo(USER users)
 	cout << "Child name: " << users.childName << endl;
 	cout << "Child age: " << users.childAge << endl;
 }
-void showAllUsersInfo(USER* users, int& counter)
-{	
-	for (int i = 0; i < counter; i++)
-	{
-		showUserInfo(users[i]);
-		cout << endl;
-	}
-	cout << endl;
-	int goback;
-	cout << "Press 1 to go back to the admin menu: ";
-	cin >> goback;
-}
-void editUser()
-{
-
-}
 int getUserIndexById(USER* users, int& counter, int id)
 {
 	for (int i = 0; i < counter; i++)
@@ -175,12 +160,73 @@ int getUserIndexById(USER* users, int& counter, int id)
 
 	return -1;
 }
-
-USER getCustomer(USER* users, int& counter, int id)
+USER getUser(USER* users, int& counter, int id)
 {
 	int index = getUserIndexById(users, counter, id);
 	return users[index];
 }
+void updateUser(USER* users, int counter, int id, USER newUser) //overwrites the students data
+{
+	int index = getUserIndexById(users, counter, id);
+	users[index] = newUser;
+}
+void showAllUsersInfo(USER* users, int& counter)
+{	
+	for (int i = 0; i < counter; i++)
+	{
+		showUserInfo(users[i]);
+		cout << endl;
+	}
+	cout << endl;
+	int goback;
+	cout << "Press 1 to go back to the admin menu: ";
+	cin >> goback;
+}
+void editUserMenu(USER* users, int& counter)
+{
+	int id;
+	cout << "Enter the id of the user you want to edit: "; cin >> id;
+	USER user = getUser(users, counter, id);
+
+	cout << "1. Edit Username" << endl;
+	cout << "2. Edit Password" << endl;
+	cout << "3. Edit First name" << endl;
+	cout << "4. Edit Last name" << endl;
+	int choice;
+	cout << "Enter your choice: ";
+	cin >> choice;
+	switch (choice)
+	{
+	case 1:cout << "Username: "; cin >> user.username;
+		updateUser(users, counter, id, user);
+		break;
+	
+	case 2:cout << "Password: "; cin >> user.password; 
+		updateUser(users, counter, id, user);
+		break;
+	
+	case 3: cout << "First name: "; cin >> user.fName;
+		updateUser(users, counter, id, user); break;
+	
+	case 4: cout << "Last name: "; cin >> user.lName;
+		updateUser(users, counter, id, user); break;
+	default:
+		break;
+	}
+	cout << endl;
+	system("cls");
+	cout << "User edited successfully!" << endl;
+}
+void editUserById(USER* users, int& counter)
+{
+	int id;
+	cout << "Enter the id: "; cin >> id;
+	int index = getUserIndexById(users, counter, id);
+	
+}
+
+
+
 
 void deleteUserById(USER* users, int &counter, int id)
 {
@@ -198,10 +244,6 @@ void deleteUserMenu(USER* students, int& counter) //takes the id that the admin 
 	cout << "Enter the Id of the user you want to delete: ";
 	cin >> userId;
 	deleteUserById(students, counter, userId);
-}
-void showUsersData()
-{
-
 }
 
 //shows the admin rights
@@ -224,6 +266,7 @@ bool adminMenu(int count, ADMIN* admins, int userId,USER* users, int& counter)
 	{
 	case 1: system("cls"); createUser(users, counter); break;
 	case 3: system("cls"); deleteUserMenu(users, counter); break;
+	case 2: system("cls"); editUserMenu(users, counter); break;
 	case 4:system("cls"); showAllUsersInfo(users, counter); break;
 	case 6: break;
 	case 9: return 0;
