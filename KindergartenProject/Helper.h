@@ -201,6 +201,7 @@ void showAllUsersInfo(USER* users, int& counter)
 //menu for the edit user option
 void editUserMenu(USER* users, int& counter)
 {
+	cout << "---EDIT USERS MENU---" << endl << endl;
 	int id;
 	cout << "Enter the id of the user you want to edit: "; cin >> id;
 	USER user = getUser(users, counter, id);
@@ -268,12 +269,12 @@ void searchUserByCriteriaMenu(USER* users, int& counter)
 bool adminMenu(int count, ADMIN* admins, int userId, USER* users, int& counter)
 {
 	int choice;
-	cout << "---ADMIN MENU---" << endl;
+	cout << "---ADMIN MENU---" << endl << endl;
 	cout << "1. Create user" << endl;
 	cout << "2. Edit user" << endl;
 	cout << "3. Delete user" << endl;
 	cout << "4. Show users" << endl;
-	cout << "5. Search user by " << endl;
+	cout << "5. Search user by a criteria" << endl;
 	cout << "9. Return to main menu" << endl;
 
 
@@ -383,6 +384,7 @@ void registrationAsAdmin(ADMIN* admins, int& adminCounter)
 }
 bool mainMenu(USER* users, int& counter, ADMIN* admins, int& adminCounter)
 {
+	cout << "---MAIN MENU---" << endl << endl;
 	int choice;
 	cout << "1. Registration as Parent" << endl;
 	cout << "2. Registration as Admin" << endl;
